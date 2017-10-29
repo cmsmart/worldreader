@@ -5,6 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Environment variables
+gem 'dotenv-rails', groups: [:development, :test]
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
@@ -32,6 +35,25 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+# Gems for layout
+gem 'bootstrap', '~> 4.0.0.beta'
+gem 'jquery-rails'
+gem "font-awesome-rails"
+
+# Gem for users
+gem 'devise'
+
+# For Shrine and image uploading
+### Shrine
+gem "shrine"
+### AWS for storing images
+gem 'aws-sdk', '~> 3'
+### Shrine Dependencies
+gem 'fastimage'
+gem 'image_processing'
+gem 'mini_magick' 
+
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.6'
