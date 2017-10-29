@@ -9,13 +9,7 @@ class RegionsController < ApplicationController
   def show
   end
 
-
-  def new
-    @region = Region.new
-  end
-
   def edit
-
   end
 
   def create

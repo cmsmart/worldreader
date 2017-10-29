@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>World Reader | <%= @page_title || "Admin area" %> </title>
+    <meta name="description" content= "<%= @meta_description %>">
+    
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -16,7 +18,14 @@
         <p class="alert"><%= alert %></p>
       <% end %>
 
-      <header></header>
+      <header>
+        <% if current_page?(root_path) %>
+          <div class="site-title">The Literary Map</div>
+          <div class="tagline">Travelling the world, one book at a time</div>
+        <% else %>
+          <div class="site-title"><a href="/">The Literary Map</a></div>
+        <% end %>      
+      </header>
 
       <% if current_page?(root_path) %>
         <main>

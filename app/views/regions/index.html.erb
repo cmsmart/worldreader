@@ -1,8 +1,18 @@
+<%# Metadata %>
+<% @page_title = 'Regions' %>
+<% @meta_description = 'List of different world regions' %>
+
+<%# Content %>
 <h1>Regions</h1>
 
 <div class="row">
-    <% @regions.each do |region| %>
-        <div class="col-sm-3"><%= link_to region.name, region %></div>
+    <% @regions.order(:id).each do |region| %>
+        <div class="col-sm-3">
+            <h2><%= link_to region.name, region %></h2>
+            <% if region.map_graphic.present? %>
+                <%= link_to (image_tag region.map_graphic_url(:thumb), class: 'img-fluid', alt: " #{region.name}"), region %>
+            <% end %>
+        </div>
         <%#= link_to 'Show', region %>
         <%#= link_to 'Edit', edit_region_path(region) %>
     <% end %>
