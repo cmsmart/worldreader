@@ -1,20 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>WorldReader</title>
+    <title>World Reader | <%= @page_title || "Admin area" %> </title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', 'https://fonts.googleapis.com/css?family=Corben:400,700|Open+Sans:300,400,400i,600,700' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <div class="main container-fluid">
+      <% if notice.present? || alert.present? %>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      <% end %>
 
-  <% if notice.present? || alert.present? %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-  <% end %>
+      <header></header>
 
-    <%= yield %>
+      <% if current_page?(root_path) %>
+        <main>
+          <%= yield %>
+        </main>
+      <% else %>
+        <main class="container">
+          <%= yield %>
+        </main>
+      <% end %> 
+    
+      <footer></footer>
+
+    </div>
   </body>
 </html>
