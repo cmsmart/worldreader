@@ -1,0 +1,14 @@
+<%# Metadata %>
+<% @page_title = @country.name %>
+<% @meta_description = "Books and authors overview for #{@country.name}" %>
+
+<%# Content %>
+
+<h1><%= @country.name %></h1>
+
+<p class="text-center">
+  <%= @country.region.name %>
+</p>
+
+<%= link_to 'Edit', edit_country_path(@country) %> |
+<%= link_to 'Back', countries_path %>

@@ -1,7 +1,16 @@
+<%# Metadata %>
+<% @page_title = @region.name %>
+<% @meta_description = "Countries of #{@region.name}" %>
+
 <h1>
   <%= @region.name %>
 </h1>
 
+<div class="text-center">
+  <% @countries.order(:name).each do |country| %>
+    <h3><%= link_to country.name, country %></h3>
+  <% end %>
+</div>
 
 <%= link_to 'Edit', edit_region_path(@region) %> |
 <%= link_to 'Back', regions_path %>

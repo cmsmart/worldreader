@@ -7,6 +7,7 @@ class RegionsController < ApplicationController
   end
 
   def show
+    @countries = @region.countries
   end
 
   def edit

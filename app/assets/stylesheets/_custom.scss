@@ -5,20 +5,20 @@ body {
     color: $main-light;
 }
 
-// p {
-//     color: $main-light;
-// }
+.main.container-fluid {
+    padding: 0;
+}
 
 h1 {
     text-align: center;
     font-family: $font-display;
     font-size: 2rem;
     margin-bottom: 2rem;
+    color: $main-dark;
 }
 
 h2, h3, h4 {
     color: $main-med;
-    font-family: $font-display;
     a {
         text-decoration: none;
         color: inherit;
@@ -32,6 +32,13 @@ h2, h3, h4 {
 h2 {
     font-size: 22px;
 }
+
+h3 {
+    font-size: 20px;
+}
+
+
+// Header
 
 header {
     padding: 30px 20px;
@@ -58,4 +65,42 @@ header {
         font-family: $font-display;
         color: $secondary-pop-one;
     }
+}
+
+// Footer
+
+footer {
+    color: #fff;
+    background: $primary-dark;
+    padding: 30px 10px;
+    text-align: center;
+    h4 {
+        margin: 20px 0;
+        color: #fff;
+    }
+    p {
+        max-width: 400px;
+        margin: 0 auto;
+        color: #fff;
+    }
+}
+
+// Buttons
+
+.btn, a.button {
+    background: $secondary-pop-one;
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 0;
+    font-family: $font-primary;
+    border: thin solid $main-dark;
+    &:hover {
+        background: darken($secondary-pop-one, 20%);
+    }
+}
+
+a.button {
+    padding: 0.5rem 0.75rem;
+    text-decoration: none;
+    transition: all 0.15s ease-in-out;
 }
