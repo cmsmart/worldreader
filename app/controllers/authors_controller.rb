@@ -10,6 +10,16 @@ class AuthorsController < ApplicationController
   # GET /authors/1
   # GET /authors/1.json
   def show
+
+    # Goodreads API
+    api_key = ENV.fetch('GOODREADS_KEY')
+    author_id = @author.goodreads_id
+    response = HTTParty.get("https://www.goodreads.com/author/show/#{author_id}?format=xml&key=#{api_key}")
+    data = response.parsed_response
+    @bio = data['GoodreadsResponse']['author']['about']
+    @photo = data['GoodreadsResponse']['author']['large_image_url']
+    @dob = (data['GoodreadsResponse']['author']['born_at']).to_date.strftime('%e %b %Y')
+
   end
 
   # GET /authors/new

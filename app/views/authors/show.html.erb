@@ -2,12 +2,29 @@
 <% @page_title = @author.name %>
 <% @meta_description = "Biography and selected works of #{@author.name}" %>
 
+<%# Page class %>
+<% @page_id = 'author' %>
+
 <%# Content %>
 
 <div class="small-title">Author</div>
 
 <h1><%= @author.name %></h1>
+<h2><%= link_to @author.country.name, country_path(@author.country) %></h2>
 
-<h2><%= @author.country.name %></h2>
+<div class="photo rounded-circle">
+    <%= image_tag @photo, alt: @author.name %>
+</div>
+
+<div class="dob">
+    <label>Born:</label>
+    <%= @dob %>
+</div>
+
+<div class="bio">
+    <%= sanitize @bio, tags: %w(br) %>
+</div>
+
+
 <%= link_to 'Edit', edit_author_path(@author) %> |
 <%= link_to 'Back', country_path(@author.country) %>
