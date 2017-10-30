@@ -8,7 +8,7 @@
 <h1><%= @country.name %></h1>
 
 <h3 class="text-center">
-  <%= @country.region.name %>
+  <%= link_to @country.region.name, region_path(@country.region) %>
 </h3>
 
 <div class="row">

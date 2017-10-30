@@ -105,7 +105,8 @@ footer {
     font-family: $font-primary;
     border: thin solid $main-dark;
     &:hover {
-        background: darken($secondary-pop-one, 20%);
+        background: darken($secondary-pop-one, 10%);
+        color: #fff;
     }
 }
 
@@ -146,9 +147,12 @@ a {
 // Author page
 
 #author {
-    .bio {
+    .content {
         max-width: 800px;
         margin: 0 auto;
+        a {
+            color: $secondary-pop-one;
+        }
     }
     .dob {
         text-align: center;
@@ -156,9 +160,14 @@ a {
 
     .photo {
         margin-top: 20px;
+        filter: grayscale(100%);
+        border: thin solid $main-dark;
     }
     .img-fluid {
         max-height: 250px;
+    }
+    .goodreads {
+        text-align: center;
     }
 }
 

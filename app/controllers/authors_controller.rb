@@ -12,13 +12,19 @@ class AuthorsController < ApplicationController
   def show
 
     # Goodreads API
-    api_key = ENV.fetch('GOODREADS_KEY')
-    author_id = @author.goodreads_id
-    response = HTTParty.get("https://www.goodreads.com/author/show/#{author_id}?format=xml&key=#{api_key}")
-    data = response.parsed_response
-    @bio = data['GoodreadsResponse']['author']['about']
-    @photo = data['GoodreadsResponse']['author']['large_image_url']
-    @dob = (data['GoodreadsResponse']['author']['born_at']).to_date.strftime('%e %b %Y')
+    if @author.goodreads_id.present?
+      api_key = ENV.fetch('GOODREADS_KEY')
+      author_id = @author.goodreads_id
+      response = HTTParty.get("https://www.goodreads.com/author/show/#{author_id}?format=xml&key=#{api_key}")
+      data = response.parsed_response
+      @no_result = data['error']
+      if @no_result != 'author not found'
+        @bio = data['GoodreadsResponse']['author']['about']
+        @photo = data['GoodreadsResponse']['author']['large_image_url']
+        @dob = data['GoodreadsResponse']['author']['born_at']
+        @goodreads_link = data['GoodreadsResponse']['author']['link']
+      end
+    end
 
   end
 
@@ -79,6 +85,6 @@ class AuthorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def author_params
-      params.require(:author).permit(:name, :country_id, :goodreads_id, :bio, :dob)
+      params.require(:author).permit(:name, :country_id, :goodreads_id, :bio, :dob, :photo, :remove_photo)
     end
 end

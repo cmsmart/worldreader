@@ -26,6 +26,8 @@
     <%= form.number_field :goodreads_id, id: :author_goodreads_id %>
   </div>
 
+  <p>Only complete the fields below if no Goodreads ID is provided</p>
+
   <div class="field">
     <%= form.label :bio %>
     <%= form.text_area :bio, id: :author_bio %>
@@ -33,8 +35,17 @@
 
   <div class="field">
     <%= form.label :dob %>
-    <%= form.date_select :dob, id: :author_dob %>
+    <%= form.date_select :dob, id: :author_dob, start_year: 1900, include_blank: true %>
   </div>
+
+  <div class="field">
+    <%= form.label :photo %>
+    <%= form.file_field :photo, id: :author_photo_image %>
+</div>
+
+ <div class="field">
+    Remove attachment: <%= form.check_box :remove_photo %>
+</div>
 
   <div class="actions">
     <%= form.submit %>

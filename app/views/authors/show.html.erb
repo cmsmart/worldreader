@@ -13,18 +13,52 @@
 <h2><%= link_to @author.country.name, country_path(@author.country) %></h2>
 
 <div class="photo rounded-circle">
-    <%= image_tag @photo, alt: @author.name %>
+    <% if @photo.present? %>
+        <%= image_tag @photo, alt: @author.name %>
+    <% elsif @author.photo.present? %>
+        <%= image_tag @author.photo_url(:thumb), alt: @author.name %>
+    <% else %>
+        <%= image_tag 'default_writer.jpg', alt: 'default image' %>
+    <% end%>
 </div>
 
-<div class="dob">
-    <label>Born:</label>
-    <%= @dob %>
-</div>
+<% if @author.goodreads_id.present? && @no_result != 'author not found' %>
+    <div class="content">
+        <% if @dob.present? %>
+            <div class="dob">
+                <%= content_tag(:label, "Born:") %>
+                <%= format_date_of_birth(@dob) %>
+            </div>
+        <% end%>
 
-<div class="bio">
-    <%= sanitize @bio, tags: %w(br) %>
-</div>
+        <% if @bio.present? %>
+            <div class="bio">
+                <%= sanitize @bio, tags: %w(br) %>
+            </div>
+        <% end %>
 
+        <div class="goodreads">
+            <p><%= link_to 'View author on Goodreads', @goodreads_link, target: "_blank" %></p>
+        </div>
+    </div>
+
+<% else %>
+    <div class="content">
+        <% if @author.dob.present? %>
+            <div class="dob">
+                <label>Born:</label>
+                <%= @author.dob %>
+            </div>
+        <% end %>
+
+        <% if @author.bio.present? %>
+            <div class="bio">
+                <%= @author.bio %>
+            </div>
+        <% end %>
+    </div>
+
+<% end %>
 
 <%= link_to 'Edit', edit_author_path(@author) %> |
 <%= link_to 'Back', country_path(@author.country) %>
