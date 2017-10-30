@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171029214850) do
+ActiveRecord::Schema.define(version: 20171029225313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "authors", force: :cascade do |t|
+    t.string "name"
+    t.bigint "country_id"
+    t.integer "goodreads_id"
+    t.text "bio"
+    t.date "dob"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_authors_on_country_id"
+    t.index ["goodreads_id"], name: "index_authors_on_goodreads_id", unique: true
+  end
 
   create_table "countries", force: :cascade do |t|
     t.string "iso"
@@ -32,5 +44,6 @@ ActiveRecord::Schema.define(version: 20171029214850) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "authors", "countries"
   add_foreign_key "countries", "regions"
 end

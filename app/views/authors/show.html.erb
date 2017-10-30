@@ -1,0 +1,13 @@
+<%# Metadata %>
+<% @page_title = @author.name %>
+<% @meta_description = "Biography and selected works of #{@author.name}" %>
+
+<%# Content %>
+
+<div class="small-title">Author</div>
+
+<h1><%= @author.name %></h1>
+
+<h2><%= @author.country.name %></h2>
+<%= link_to 'Edit', edit_author_path(@author) %> |
+<%= link_to 'Back', country_path(@author.country) %>

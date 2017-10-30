@@ -11,7 +11,7 @@
   </thead>
 
   <tbody>
-    <% @countries.each do |country| %>
+    <% @countries.order(:name).each do |country| %>
       <tr>
         <td><%= country.iso %></td>
         <td><%= country.name %></td>
