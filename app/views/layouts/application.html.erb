@@ -11,7 +11,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body id="<%= @page_id %>" >
     <div class="main container-fluid">
       <% if notice.present? || alert.present? %>
         <p class="notice"><%= notice %></p>

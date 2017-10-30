@@ -2,12 +2,63 @@
 <% @page_title = @author.name %>
 <% @meta_description = "Biography and selected works of #{@author.name}" %>
 
+<%# Page class %>
+<% @page_id = 'author' %>
+
 <%# Content %>
 
 <div class="small-title">Author</div>
 
 <h1><%= @author.name %></h1>
+<h2><%= link_to @author.country.name, country_path(@author.country) %></h2>
 
-<h2><%= @author.country.name %></h2>
+<div class="photo rounded-circle">
+    <% if @photo.present? %>
+        <%= image_tag @photo, alt: @author.name %>
+    <% elsif @author.photo.present? %>
+        <%= image_tag @author.photo_url(:thumb), alt: @author.name %>
+    <% else %>
+        <%= image_tag 'default_writer.jpg', alt: 'default image' %>
+    <% end%>
+</div>
+
+<% if @author.goodreads_id.present? && @no_result != 'author not found' %>
+    <div class="content">
+        <% if @dob.present? %>
+            <div class="dob">
+                <%= content_tag(:label, "Born:") %>
+                <%= format_date_of_birth(@dob) %>
+            </div>
+        <% end%>
+
+        <% if @bio.present? %>
+            <div class="bio">
+                <%= sanitize @bio, tags: %w(br) %>
+            </div>
+        <% end %>
+
+        <div class="goodreads">
+            <p><%= link_to 'View author on Goodreads', @goodreads_link, target: "_blank" %></p>
+        </div>
+    </div>
+
+<% else %>
+    <div class="content">
+        <% if @author.dob.present? %>
+            <div class="dob">
+                <label>Born:</label>
+                <%= @author.dob %>
+            </div>
+        <% end %>
+
+        <% if @author.bio.present? %>
+            <div class="bio">
+                <%= @author.bio %>
+            </div>
+        <% end %>
+    </div>
+
+<% end %>
+
 <%= link_to 'Edit', edit_author_path(@author) %> |
 <%= link_to 'Back', country_path(@author.country) %>

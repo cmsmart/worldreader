@@ -13,7 +13,7 @@ h1 {
     text-align: center;
     font-family: $font-display;
     font-size: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     color: $main-dark;
 }
 
@@ -31,6 +31,7 @@ h2, h3, h4 {
 
 h2 {
     font-size: 22px;
+    text-align: center;
 }
 
 h3 {
@@ -104,7 +105,8 @@ footer {
     font-family: $font-primary;
     border: thin solid $main-dark;
     &:hover {
-        background: darken($secondary-pop-one, 20%);
+        background: darken($secondary-pop-one, 10%);
+        color: #fff;
     }
 }
 
@@ -123,3 +125,49 @@ a {
         color: $main-light;
     }
 }
+
+//Images
+
+.rounded-circle {
+    position: relative;
+    height: 100px;
+    width: 100px;
+    overflow: hidden;
+    margin: 0 auto 20px;
+}
+
+.rounded-circle img {
+    position: absolute;
+    left: 50%;
+    width: 100px;
+    height: auto;
+    transform: translateX(-50%);
+ }
+
+// Author page
+
+#author {
+    .content {
+        max-width: 800px;
+        margin: 0 auto;
+        a {
+            color: $secondary-pop-one;
+        }
+    }
+    .dob {
+        text-align: center;
+    }
+
+    .photo {
+        margin-top: 20px;
+        filter: grayscale(100%);
+        border: thin solid $main-dark;
+    }
+    .img-fluid {
+        max-height: 250px;
+    }
+    .goodreads {
+        text-align: center;
+    }
+}
+
