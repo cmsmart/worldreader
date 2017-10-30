@@ -3,12 +3,21 @@
 <% @meta_description = "Books and authors overview for #{@country.name}" %>
 
 <%# Content %>
+<div class="small-title">Country</div>
 
 <h1><%= @country.name %></h1>
 
-<p class="text-center">
+<h3 class="text-center">
   <%= @country.region.name %>
-</p>
+</h3>
+
+<div class="row">
+  <% @authors.order(:name).each do |author| %>
+    <div class="col-sm-3"><%= link_to author.name, author %></div>
+  <% end %>
+</div>
+
 
 <%= link_to 'Edit', edit_country_path(@country) %> |
-<%= link_to 'Back', countries_path %>
+
+<%= link_to 'Back', region_path(@country.region) %>
