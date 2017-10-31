@@ -1,9 +1,9 @@
 class CreateCountries < ActiveRecord::Migration[5.1]
   def change
     create_table :countries do |t|
-      t.string :iso
+      t.string :iso, null: false
       t.string :name
-      t.references :region, foreign_key: true
+      t.references :region, foreign_key: true, null: false
 
       t.timestamps
 
