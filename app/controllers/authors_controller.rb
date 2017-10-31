@@ -1,5 +1,6 @@
 class AuthorsController < ApplicationController
   before_action :set_author, only: [:show, :edit, :update, :destroy]
+  
 
   # GET /authors
   # GET /authors.json
@@ -10,6 +11,8 @@ class AuthorsController < ApplicationController
   # GET /authors/1
   # GET /authors/1.json
   def show
+
+    @books = @author.books
 
     # Goodreads API
     if @author.goodreads_id.present?

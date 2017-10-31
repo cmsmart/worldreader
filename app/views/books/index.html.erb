@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Books</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Cover image</th>
+      <th>Summary</th>
+      <th>Published year</th>
+      <th>Native language</th>
+      <th>Author</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @books.each do |book| %>
+      <tr>
+        <td><%= book.title %></td>
+        <td><%= image_tag book.cover_image_url(:thumb) %></td>
+        <td><%= book.summary %></td>
+        <td><%= book.published_year %></td>
+        <td><%= book.original_language %></td>
+        <td><%= book.author.name %></td>
+        <td><%= link_to 'Show', book %></td>
+        <td><%= link_to 'Edit', edit_book_path(book) %></td>
+        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Book', new_book_path %>

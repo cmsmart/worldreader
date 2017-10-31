@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171030213534) do
+ActiveRecord::Schema.define(version: 20171030232248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,18 @@ ActiveRecord::Schema.define(version: 20171030213534) do
     t.text "photo_data"
     t.index ["country_id"], name: "index_authors_on_country_id"
     t.index ["goodreads_id"], name: "index_authors_on_goodreads_id", unique: true
+  end
+
+  create_table "books", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "cover_image_data"
+    t.text "summary"
+    t.integer "published_year"
+    t.string "original_language"
+    t.bigint "author_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_books_on_author_id"
   end
 
   create_table "countries", force: :cascade do |t|
@@ -46,5 +58,6 @@ ActiveRecord::Schema.define(version: 20171030213534) do
   end
 
   add_foreign_key "authors", "countries"
+  add_foreign_key "books", "authors"
   add_foreign_key "countries", "regions"
 end

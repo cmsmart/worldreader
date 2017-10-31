@@ -2,26 +2,24 @@
 
 <h1>Authors</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
+      <th>ID</th>
       <th>Country</th>
       <th>Goodreads</th>
-      <th>Bio</th>
-      <th>Dob</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @authors.each do |author| %>
+    <% @authors.order("name").each do |author| %>
       <tr>
         <td><%= author.name %></td>
+        <td><%= author.id %></td>
         <td><%= author.country.name %></td>
         <td><%= author.goodreads_id %></td>
-        <td><%= author.bio %></td>
-        <td><%= author.dob %></td>
         <td><%= link_to 'Show', author %></td>
         <td><%= link_to 'Edit', edit_author_path(author) %></td>
         <td><%= link_to 'Destroy', author, method: :delete, data: { confirm: 'Are you sure?' } %></td>

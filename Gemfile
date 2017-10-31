@@ -41,6 +41,8 @@ gem 'bootstrap', '~> 4.0.0.beta'
 gem 'jquery-rails'
 gem "font-awesome-rails"
 
+gem "select2-rails"
+
 # Gem for users
 gem 'devise'
 
