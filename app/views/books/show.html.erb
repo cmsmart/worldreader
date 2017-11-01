@@ -14,8 +14,7 @@
 <h3 class="text-center"><%= link_to @book.author.name, @book.author %></h3>
 <p class="text-center"><%= link_to @book.author.country.name, @book.author.country %></p>
 
-<div class="row">
-
+<div class="row books-body">
   <% if @book.cover_image.present? %>
     <div class="col-sm-4">
       <%= image_tag @book.cover_image_url(:original), alt: " #{@book.title}", class: "img-fluid" %>
@@ -25,12 +24,14 @@
   <div class="col-sm-8">
     <p><label>First published: </label> <%= @book.published_year %></p>
     <p><label>Original language: </label> <%= @book.original_language %></p>
-    <% if @description.present? %>
-      <div class="description">
-          <%= sanitize @description, tags: %w(br) %>
-      </div>
-    <% end %>
-    <p><label> <%= link_to @goodreads_url, 'Goodreads average rating:'%></label> <%= @average_rating %>/5.0 (from <%= @ratings_count %> ratings)</p>
+    <% if @no_result != "Page not found" %>
+      <p class="api_link"><label> <%= link_to 'Goodreads average rating:', @goodreads_link, target: "_blank" %></label> <%= @average_rating %> / 5.0 <span>(from <%= @ratings_count %> ratings)</span></p>
+      <% if @description.present? %>
+        <div class="description">
+            <%= sanitize @description, tags: %w(br) %>
+        </div>
+      <% end %>
+    <% end%>
   </div>
 
 </div>

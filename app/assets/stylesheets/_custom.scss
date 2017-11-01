@@ -1,8 +1,10 @@
 body {
     font-size: 16px;
     font-family: $font-primary;
-    line-height: 1.8em;
+    line-height: 2em;
     color: $main-light;
+    background: image-url("bg_paper.jpg");
+    // background-size: cover;
 }
 
 .main.container-fluid {
@@ -126,6 +128,14 @@ a {
     }
 }
 
+
+// Labels
+
+ label {
+     color: $main-med;
+     font-size: 0.9em;
+     margin-bottom: 0rem;
+ }
 //Images
 
 .rounded-circle {
@@ -144,6 +154,15 @@ a {
     transform: translateX(-50%);
  }
 
+// Countries page
+#country {
+    .content {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+}
+
+
 // Author page
 
 #author {
@@ -157,7 +176,10 @@ a {
     .dob {
         text-align: center;
     }
-
+    .bio {
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
     .photo {
         margin-top: 20px;
         filter: grayscale(100%);
@@ -167,7 +189,29 @@ a {
         max-height: 250px;
     }
     .goodreads {
-        text-align: center;
+        // text-align: center;
     }
 }
 
+// Book page
+
+.books-body {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    .description {
+        margin-bottom: 1rem;
+    }
+    .api_link {
+        a {
+            color: $secondary-pop-one;
+        }
+        span {
+        font-size: 0.8em;
+        }
+    }
+}
+
+#book-display {
+    max-width: 800px;
+    margin: 0 auto;
+}

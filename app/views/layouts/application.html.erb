@@ -9,15 +9,41 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag    'application', 'https://fonts.googleapis.com/css?family=Corben:400,700|Open+Sans:300,400,400i,600,700' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
   </head>
 
   <body id="<%= @page_id %>" >
+  <!-- JQuery for autocomplete select on large dropdowns -->
+    <script>
+      $(document).ready(function() {
+      $('.autocomplete').select2();
+      });
+    </script>
+
     <div class="main container-fluid">
       <% if notice.present? || alert.present? %>
         <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>
       <% end %>
+
+      <!-- Navigation -->
+
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+
+            <li class="nav-item <%= 'active' if current_page?(root_path) %>"><%= link_to "Home", root_path, class: "nav-link" %></li>
+            <li class="nav-item <%= 'active' if current_page?(regions_path) %>"><%= link_to "Regions", regions_path, class: "nav-link"%></li>
+            <li class="nav-item <%= 'active' if current_page?(countries_path) %>"><%= link_to "Countries", countries_path, class: "nav-link"%></li>
+            <li class="nav-item <%= 'active' if current_page?(authors_path) %>"><%= link_to "Authors", authors_path, class: "nav-link"%></li>
+            <li class="nav-item <%= 'active' if current_page?(books_path) %>"><%= link_to "Books", books_path, class: "nav-link" %></li>
+          </ul>
+        </div>
+      </nav>
+
 
       <header>
         <% if current_page?(root_path) %>
