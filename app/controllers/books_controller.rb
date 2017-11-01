@@ -1,6 +1,8 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
+
+
   # GET /books
   # GET /books.json
   def index
@@ -13,15 +15,23 @@ class BooksController < ApplicationController
 
     # Goodreads API
       api_key = ENV.fetch('GOODREADS_KEY')
-      author_name = @book.author.name
-      book_name = @book.title
+
+      # Goodreads API call requires all ASCII characters
+      author_name = @book.author.name.encode('ASCII', :replace => "")
+      book_name = @book.title.encode('ASCII', :replace => "")
+
+      # api call
       response = HTTParty.get("https://www.goodreads.com/book/title.xml?author=#{author_name}&key=#{api_key}&title=#{book_name}")
+      
+      # parse xml to json with httparty and extract required results
       data = response.parsed_response
       @no_result = data['error']
-      @description = data['GoodreadsResponse']['book']['description']
-      @average_rating = data['GoodreadsResponse']['book']['average_rating']
-      @ratings_count = data['GoodreadsResponse']['book']['work']['ratings_count']
-      @goodreads_link = data['GoodreadsResponse']['book']['url']
+      if @no_result != "Page not found"
+        @description = data['GoodreadsResponse']['book']['description']
+        @average_rating = data['GoodreadsResponse']['book']['average_rating']
+        @ratings_count = data['GoodreadsResponse']['book']['work']['ratings_count']
+        @goodreads_link = data['GoodreadsResponse']['book']['url']
+      end
 
   end
 

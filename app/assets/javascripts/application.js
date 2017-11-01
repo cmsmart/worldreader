@@ -15,8 +15,3 @@
 //= require turbolinks
 //= require select2
 //= require_tree .
-
-
-$(document).ready(function() {
-    $('.autocomplete').select2();
-});

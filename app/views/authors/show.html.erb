@@ -30,7 +30,6 @@
                 <%= format_date_of_birth(@dob) %>
             </div>
         <% end%>
-
         <% if @bio.present? %>
             <div class="bio">
                 <%= sanitize @bio, tags: %w(br) %>
@@ -59,10 +58,12 @@
     </div>
 <% end %>
 
-<div class="row book">
-  <% @books.each do |book| %>
-  <p class="col-sm-3" ><%= link_to book.title, book %></p>
-  <% end %>
+<div class="small-title">Books</div>
+
+<div id="book-display" class="d-flex flex-wrap justify-content-around">
+    <% @books.each do |book| %>
+        <p class="p-2" ><%= link_to (image_tag book.cover_image_url(:thumb), class: 'img-fluid'), book %></p>
+    <% end %>
 </div>
 
 <%= link_to 'Edit', edit_author_path(@author) %> |

@@ -11,6 +11,7 @@ class CountriesController < ApplicationController
   # GET /countries/1.json
   def show
     @authors = @country.authors
+    @books = @country.books
   end
 
   # GET /countries/1/edit
