@@ -6,12 +6,12 @@
 <% @page_id = 'author' %>
 
 <%# Content %>
-
 <div class="small-title">Author</div>
 
 <h1><%= @author.name %></h1>
 <h2><%= link_to @author.country.name, country_path(@author.country) %></h2>
 
+<%# Use goodreads photo, content photo, or default in that order %>
 <div class="photo rounded-circle">
     <% if @photo.present? %>
         <%= image_tag @photo, alt: @author.name %>
@@ -22,6 +22,7 @@
     <% end%>
 </div>
 
+<%# if author has a goodreads id then use that data, otherwise use data from form %>
 <% if @author.goodreads_id.present? && @no_result != 'author not found' %>
     <div class="content">
         <% if @dob.present? %>
@@ -58,6 +59,7 @@
     </div>
 <% end %>
 
+<%# Show all books that are linked to author %>
 <div class="small-title">Books</div>
 
 <div id="book-display" class="d-flex flex-wrap justify-content-around">

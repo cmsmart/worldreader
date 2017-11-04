@@ -1,0 +1,28 @@
+<%# Metadata %>
+<% @page_title = 'Profile' %>
+<% @meta_description = "Profile page for  #{@profile.username}" %>
+
+<%# Page class %>
+<% @page_id = 'profile' %>
+
+<%# Content %>
+
+<div class="small-title">Profile</div>
+
+<h1><%= @profile.username %></h1>
+
+<p>
+  <strong>Username:</strong>
+  <%= @profile.username %>
+</p>
+
+ <% if @profile.avatar.present? %>
+    <figure>
+    <%= image_tag @profile.avatar_url(:thumb), alt: " #{@profile.username}" %>
+    </figure>
+  <% else %>
+    <%= image_tag 'default_writer.jpg', alt: 'default image' %>
+  <% end %>
+
+<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<%= link_to 'Back', profiles_path %>

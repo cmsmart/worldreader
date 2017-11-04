@@ -15,9 +15,14 @@ class AuthorsController < ApplicationController
 
     # Goodreads API
     if @author.goodreads_id.present?
+      
       api_key = ENV.fetch('GOODREADS_KEY')
       author_id = @author.goodreads_id
+
+      # Api call
       response = HTTParty.get("https://www.goodreads.com/author/show/#{author_id}?format=xml&key=#{api_key}")
+      
+      # parse xml to json with httparty and extract required results
       data = response.parsed_response
       @no_result = data['error']
       if @no_result != 'author not found'
