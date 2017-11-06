@@ -2,14 +2,14 @@ class AuthorsController < ApplicationController
   before_action :set_author, only: [:show, :edit, :update, :destroy]
   
 
-  # GET /authors
-  # GET /authors.json
   def index
+    # only show index page to admin users
+    @users = policy_scope(Author)
+    authorize @users
+
     @authors = Author.all
   end
 
-  # GET /authors/1
-  # GET /authors/1.json
   def show
     @books = @author.books
 
@@ -35,17 +35,15 @@ class AuthorsController < ApplicationController
 
   end
 
-  # GET /authors/new
   def new
     @author = Author.new
   end
 
-  # GET /authors/1/edit
+
   def edit
   end
 
-  # POST /authors
-  # POST /authors.json
+
   def create
     @author = Author.new(author_params)
 
@@ -60,8 +58,7 @@ class AuthorsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /authors/1
-  # PATCH/PUT /authors/1.json
+
   def update
     respond_to do |format|
       if @author.update(author_params)
@@ -74,8 +71,7 @@ class AuthorsController < ApplicationController
     end
   end
 
-  # DELETE /authors/1
-  # DELETE /authors/1.json
+
   def destroy
     @author.destroy
     respond_to do |format|
@@ -85,9 +81,11 @@ class AuthorsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_author
       @author = Author.find(params[:id])
+      authorize @author
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

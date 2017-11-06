@@ -68,5 +68,6 @@
     <% end %>
 </div>
 
-<%= link_to 'Edit', edit_author_path(@author) %> |
-<%= link_to 'Back', country_path(@author.country) %>
+<% if current_user.try(:admin?) %> 
+    <%= link_to 'Edit', edit_author_path(@author) %>
+<% end %>

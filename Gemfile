@@ -43,8 +43,9 @@ gem "font-awesome-rails"
 
 gem "select2-rails"
 
-# Gem for users
+# Gems for users
 gem 'devise'
+gem "pundit"
 
 # For Shrine and image uploading
 ### Shrine
