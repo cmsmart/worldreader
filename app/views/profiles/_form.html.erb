@@ -11,23 +11,18 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name, id: :profile_first_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name, id: :profile_last_name %>
-  </div>
-
-  <div class="field">
+   <div class="field">
     <%= form.label :avatar %>
     <%= form.file_field :avatar, id: :profile_avatar_image %>
   </div>
 
   <div class="field">
       Remove attachment: <%= form.check_box :remove_avatar %>
+  </div>
+
+  <div class="field">
+    <%= form.label :country_id %>
+    <%= form.collection_select :country_id, Country.order(:name), :id, :name, { include_blank: "Select a country" }, { class: "autocomplete" } %>
   </div>
 
   <div class="actions">
