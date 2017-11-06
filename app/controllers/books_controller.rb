@@ -1,11 +1,13 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
-
-
+  # before_action :authenticate_user!
 
   # GET /books
   # GET /books.json
   def index
+    @users = policy_scope(Book)
+    authorize @users
+    
     @books = Book.all
   end
 
@@ -88,6 +90,7 @@ class BooksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_book
       @book = Book.find(params[:id])
+      authorize @book
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

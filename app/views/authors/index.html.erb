@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Authors</h1>
 
 <table class="table">
@@ -7,20 +5,19 @@
     <tr>
       <th>Name</th>
       <th>ID</th>
+      <th>Goodreads ID</th>
       <th>Country</th>
-      <th>Goodreads</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @authors.order("name").each do |author| %>
       <tr>
-        <td><%= author.name %></td>
-        <td><%= author.id %></td>
-        <td><%= author.country.name %></td>
+        <td><%= link_to author.name, author %></td>
+        <td><%= link_to author.id, author %></td>
         <td><%= author.goodreads_id %></td>
-        <td><%= link_to 'Show', author %></td>
+        <td><%= author.country.name %></td>
         <td><%= link_to 'Edit', edit_author_path(author) %></td>
         <td><%= link_to 'Destroy', author, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

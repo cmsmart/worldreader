@@ -43,8 +43,9 @@ gem "font-awesome-rails"
 
 gem "select2-rails"
 
-# Gem for users
+# Gems for users
 gem 'devise'
+gem "pundit"
 
 # For Shrine and image uploading
 ### Shrine
@@ -56,8 +57,11 @@ gem 'fastimage'
 gem 'image_processing'
 gem 'mini_magick' 
 
-
+# API calls
 gem 'httparty', '~> 0.13.5'
+
+# Admin
+gem 'rails_admin', '~> 1.2'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.6'

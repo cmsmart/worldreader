@@ -24,10 +24,13 @@
   <div class="col-sm-8">
     <p><label>First published: </label> <%= @book.published_year %></p>
     <p><label>Original language: </label> <%= @book.original_language %></p>
+    
+    <%# if result is found from goodreads %>
     <% if @no_result != "Page not found" %>
       <p class="api_link"><label> <%= link_to 'Goodreads average rating:', @goodreads_link, target: "_blank" %></label> <%= @average_rating %> / 5.0 <span>(from <%= @ratings_count %> ratings)</span></p>
       <% if @description.present? %>
         <div class="description">
+            <%# strip all tags from result other than <br> %>
             <%= sanitize @description, tags: %w(br) %>
         </div>
       <% end %>
@@ -36,6 +39,6 @@
 
 </div>
 
-
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+<% if current_user.try(:admin?) %> 
+  <%= link_to 'Edit', edit_book_path(@book) %>
+<% end %>

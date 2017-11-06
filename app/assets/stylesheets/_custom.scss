@@ -21,14 +21,6 @@ h1 {
 
 h2, h3, h4 {
     color: $main-med;
-    a {
-        text-decoration: none;
-        color: inherit;
-        &:hover {
-            color: $secondary-pop-one;
-            text-decoration: none;
-        }
-    }
 }
 
 h2 {
@@ -74,7 +66,7 @@ header {
 
 .small-title {
     text-transform: uppercase;
-    color: $secondary-pop-one;
+    color: $main-med;
     font-size: 16px;
     text-align: center;
 }
@@ -122,9 +114,10 @@ a.button {
 
 a {
     text-decoration: none;
-    color: $main-med;
+    color: $secondary-pop-one;
     &:hover {
-        color: $main-light;
+        color: $main-med;
+        text-decoration: none;
     }
 }
 
@@ -202,11 +195,8 @@ a {
         margin-bottom: 1rem;
     }
     .api_link {
-        a {
-            color: $secondary-pop-one;
-        }
         span {
-        font-size: 0.8em;
+            font-size: 0.8em;
         }
     }
 }
