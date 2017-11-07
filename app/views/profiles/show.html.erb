@@ -11,8 +11,9 @@
 
 <h1><%= @profile.user.username %></h1>
 
-<p class="text-center"><%= link_to 'Edit account details', edit_user_registration_path %></p>
-
+<% if @profile.user == current_user %>
+  <p class="text-center"><%= link_to 'Edit account details', edit_user_registration_path %> | <%= link_to 'Edit profile', edit_profile_path(@profile) %></p>
+<% end %>
 <h2> Country of residence: <%= @profile.country.name %></h2>
 
 <div class="photo rounded-circle">
@@ -24,6 +25,3 @@
     <%= image_tag 'default_writer.jpg', alt: 'default image' %>
   <% end %>
   </div>
-
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
-<%= link_to 'Back', profiles_path %>

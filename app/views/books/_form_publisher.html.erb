@@ -1,0 +1,70 @@
+<h2> Publisher </h2>
+<%= form_with(model: book, local: true) do |form| %>
+
+  <% if book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+      <ul>
+      <% book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <article>
+      <% if flash[:error].present? %>
+        <div id="error_explanation">
+          <p><%= flash[:error] %></p>
+        </div>
+      <% end %>
+      <label class="amount">
+        <span>Amount: $100.00 (for 1 month promoted placement)</span>
+      </label>
+  </article>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :book_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cover_image %>
+    <%= form.file_field :cover_image, id: :book_cover_image %>
+  </div>
+
+  <div class="field">
+    Remove attachment: <%= form.check_box :remove_cover_image %>
+</div>
+
+  <div class="field">
+    <%= form.label :summary %>
+    <%= form.text_area :summary, id: :book_summary %>
+  </div>
+
+  <div class="field">
+    <%= form.label :published_year %>
+    <%= form.number_field :published_year, id: :book_published_year %>
+  </div>
+
+  <div class="field">
+    <%= form.label :original_language %>
+    <%= form.text_field :original_language, id: :book_original_language %>
+  </div>
+
+  <div class="field">
+    <%= form.label :author_id %>
+   <%= form.collection_select :author_id, Author.order(:name), :id, :name, { include_blank: "Select an author" }, {class: "autocomplete"} %>
+  </div>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+    data-description="New book"
+    data-email='<%= current_user.email %>' 
+    data-amount="10000"
+    data-currency="aud"
+    data-locale="auto"></script>
+
+
+<% end %>

@@ -66,6 +66,11 @@ gem 'rails_admin', '~> 1.2'
 # Email
 gem 'mailgun-ruby', '~>1.1.6'
 
+# Payments
+gem 'stripe'
+
+# Search
+gem "algoliasearch-rails"
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.6'

@@ -8,8 +8,10 @@ class ApplicationController < ActionController::Base
 
   # redirect to profile page upon sign in if empty
   def after_sign_in_path_for(resource)
-    if @profile.nil?
+    if @profile.nil? && @user.user?
       new_profile_path
+    else @profile.nil? && @user.publisher?
+      new_publisher_path
     end
   end
 

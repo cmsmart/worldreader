@@ -18,8 +18,11 @@
         <td><%= link_to author.id, author %></td>
         <td><%= author.goodreads_id %></td>
         <td><%= author.country.name %></td>
+
+        <% if current_user.try(:admin?) %> 
         <td><%= link_to 'Edit', edit_author_path(author) %></td>
         <td><%= link_to 'Destroy', author, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

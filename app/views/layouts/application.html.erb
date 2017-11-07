@@ -46,7 +46,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav">
             <% if current_user.try(:admin?) %> 
-              <li class="nav-item"><%= link_to "Admin", "admin", class: "nav-link" %></li>
+              <li class="nav-item"><%= link_to "Admin", "/admin", class: "nav-link" %></li>
             <% end %>
             <li class="nav-item <%= 'active' if current_page?(root_path) %>"><%= link_to "Home", root_path, class: "nav-link" %></li>
             <li class="nav-item <%= 'active' if current_page?(regions_path) %>"><%= link_to "Regions", regions_path, class: "nav-link"%></li>

@@ -2,11 +2,6 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
 
-  # GET /profiles
-  # GET /profiles.json
-  def index
-    @profiles = Profile.all
-  end
 
   # GET /profiles/1
   # GET /profiles/1.json
@@ -43,7 +38,7 @@ class ProfilesController < ApplicationController
 
   # PATCH/PUT /profiles/1
   # PATCH/PUT /profiles/1.json
-  def update
+  def update  
     respond_to do |format|
       if @profile.update(profile_params)
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }

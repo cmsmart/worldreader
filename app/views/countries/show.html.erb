@@ -27,7 +27,9 @@
 
   <div class="row">
     <% @authors.order(:name).each do |author| %>
-      <div class="col-sm-3"><%= link_to author.name, author %></div>
+      <% if author.books.present? %>
+        <div class="col-sm-3"><%= link_to author.name, author %></div>
+      <% end %>
     <% end %>
   </div>
 </div>

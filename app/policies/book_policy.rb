@@ -27,7 +27,7 @@ class BookPolicy < ApplicationPolicy
     
     
     def create?
-        return true if user.present? && user.admin?
+        return true if user.present? && ( user.admin? || user.publisher?)
     end
     
     def update?

@@ -15,11 +15,13 @@
 <p class="text-center"><%= link_to @book.author.country.name, @book.author.country %></p>
 
 <div class="row books-body">
-  <% if @book.cover_image.present? %>
-    <div class="col-sm-4">
+  <div class="col-sm-4">
+    <% if @book.cover_image.present? %>
       <%= image_tag @book.cover_image_url(:original), alt: " #{@book.title}", class: "img-fluid" %>
-    </div>
-  <% end %>
+    <% else %>
+      <%= image_tag 'default_book.jpg', alt: 'default image' %>
+    <% end %>
+  </div>
 
   <div class="col-sm-8">
     <p><label>First published: </label> <%= @book.published_year %></p>

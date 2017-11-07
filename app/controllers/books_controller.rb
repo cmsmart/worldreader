@@ -50,14 +50,47 @@ class BooksController < ApplicationController
   # POST /books.json
   def create
     @book = Book.new(book_params)
+    if current_user.publisher?
 
-    respond_to do |format|
-      if @book.save
-        format.html { redirect_to @book, notice: 'Book was successfully created.' }
-        format.json { render :show, status: :created, location: @book }
-      else
-        format.html { render :new }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
+      charge_error = nil
+      
+        if @book.valid?
+          begin
+            customer = Stripe::Customer.create(
+              :email => current_user.email,
+              :card  => params[:stripeToken])
+      
+            charge = Stripe::Charge.create(
+              :customer    => customer.id,
+              :amount      => 10000,
+              :description => @book.title,
+              :currency    => 'aud')
+      
+          rescue Stripe::CardError => e
+            charge_error = e.message
+          end
+
+          if charge_error
+            flash[:error] = charge_error
+            render :new
+          else
+            @book.save
+            redirect_to @book, notice: 'Book was successfully created.'
+          end
+        else
+          flash[:error] = 'one or more errors in your book'
+          render :new
+        end
+
+    else
+      respond_to do |format|
+        if @book.save
+          format.html { redirect_to @book, notice: 'Book was successfully created.' }
+          format.json { render :show, status: :created, location: @book }
+        else
+          format.html { render :new }
+          format.json { render json: @book.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

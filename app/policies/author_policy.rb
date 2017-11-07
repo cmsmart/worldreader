@@ -18,7 +18,7 @@ class AuthorPolicy < ApplicationPolicy
         end
     
         def index?
-            return true if user.present? && user.admin?
+            return true if user.present? && ( user.admin? || user.publisher?)
         end
 
         def show?
@@ -26,7 +26,7 @@ class AuthorPolicy < ApplicationPolicy
         end
         
         def create?
-            return true if user.present? && user.admin?
+            return true if user.present? && ( user.admin? || user.publisher?)
         end
         
         def update?

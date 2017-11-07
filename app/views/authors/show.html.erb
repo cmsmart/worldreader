@@ -60,13 +60,20 @@
 <% end %>
 
 <%# Show all books that are linked to author %>
-<div class="small-title">Books</div>
-
-<div id="book-display" class="d-flex flex-wrap justify-content-around">
-    <% @books.each do |book| %>
-        <p class="p-2" ><%= link_to (image_tag book.cover_image_url(:thumb), class: 'img-fluid'), book %></p>
-    <% end %>
-</div>
+<% if @author.books.present? %>
+    <div class="small-title">Books</div>
+    <div id="book-display" class="d-flex flex-wrap justify-content-around">
+        <% @books.each do |book| %>
+            <% if book.cover_image.present? %>
+                <div><%= image_tag book.cover_image_url(:original), alt: " #{book.title}", class: "img-fluid" %>
+                <%= book.title %> </div>
+            <% else %>
+                <div><%= image_tag 'default_book.jpg', alt: 'default image',  class: "img-fluid" %>
+                <p><%= book.title %></p></div>
+            <% end %>
+        <% end %>
+    </div>
+<% end %>
 
 <% if current_user.try(:admin?) %> 
     <%= link_to 'Edit', edit_author_path(@author) %>
