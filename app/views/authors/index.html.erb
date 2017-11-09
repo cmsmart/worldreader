@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>ID</th>
+      <!-- <th>ID</th> -->
       <th>Goodreads ID</th>
       <th>Country</th>
       <th colspan="2"></th>
@@ -15,7 +15,7 @@
     <% @authors.order("name").each do |author| %>
       <tr>
         <td><%= link_to author.name, author %></td>
-        <td><%= link_to author.id, author %></td>
+        <!-- <td><%= link_to author.id, author %></td>-->
         <td><%= author.goodreads_id %></td>
         <td><%= author.country.name %></td>
 

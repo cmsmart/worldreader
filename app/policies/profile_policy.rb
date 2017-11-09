@@ -1,4 +1,8 @@
 class ProfilePolicy < ApplicationPolicy
+
+        def index?
+         false
+        end
     
 
         def update?
