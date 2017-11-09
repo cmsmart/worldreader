@@ -51,7 +51,7 @@
             <!-- <li class="nav-item <%#= 'active' if current_page?(countries_path) %>"><%#= link_to "Countries", countries_path, class: "nav-link"%></li>-->
             <%# hide menu item if user not authorized %>
             <li class="nav-item"><%= link_to "About", root_path, class: "nav-link" %></li>
-            <% if user_signed_in? && current_user.user? %>
+            <% if user_signed_in? && current_user.user? && current_user.profile.present? %>
               <li class="nav-item"><%= link_to "My profile", profile_path(current_user.profile), class: "nav-link" %></li>
             <% end %>
             <% if policy(Author).index? %> 

@@ -325,32 +325,32 @@
 
 # Books
 
-Book.delete_all
+#Book.delete_all
 
-# Australia
-Book.create!(title: "The True History of the Kelly Gang", published_year: 2000, original_language: 'English', author_id: 3)
+# # Australia
+# Book.create!(title: "The True History of the Kelly Gang", published_year: 2000, original_language: 'English', author_id: 3)
 
-Book.create!(title: "Oscar and Lucinda", published_year: 1998, original_language: 'English', author_id: 3)
-Book.create!(title: "Illywhacker", published_year: 1985, original_language: 'English', author_id: 3)
+# Book.create!(title: "Oscar and Lucinda", published_year: 1998, original_language: 'English', author_id: 3)
+# Book.create!(title: "Illywhacker", published_year: 1985, original_language: 'English', author_id: 3)
 
-Book.create!(title: "The Secret River", published_year: 2005, original_language: 'English', author_id: 4)
+# Book.create!(title: "The Secret River", published_year: 2005, original_language: 'English', author_id: 4)
 
-Book.create!(title: "The Book Thief", published_year: 2005, original_language: 'English', author_id: 6)
+# Book.create!(title: "The Book Thief", published_year: 2005, original_language: 'English', author_id: 6)
 
-Book.create!(title: "Gould's Book of Fish", published_year: 2001, original_language: 'English', author_id: 5)
+# Book.create!(title: "Gould's Book of Fish", published_year: 2001, original_language: 'English', author_id: 5)
 
-Book.create!(title: "Jasper Jones", published_year: 2009, original_language: 'English', author_id: 7)
+# Book.create!(title: "Jasper Jones", published_year: 2009, original_language: 'English', author_id: 7)
 
-Book.create!(title: "Cloudstreet", published_year: 1991, original_language: 'English', author_id: 8)
+# Book.create!(title: "Cloudstreet", published_year: 1991, original_language: 'English', author_id: 8)
 
-Book.create!(title: "Carpentaria", published_year: 2006, original_language: 'English', author_id: 9)
+# Book.create!(title: "Carpentaria", published_year: 2006, original_language: 'English', author_id: 9)
 
-Book.create!(title: "Benang", published_year: 1999, original_language: 'English', author_id: 10)
+# Book.create!(title: "Benang", published_year: 1999, original_language: 'English', author_id: 10)
 
-Book.create!(title: "A Fraction of the Whole", published_year: 2008, original_language: 'English', author_id: 11)
+# Book.create!(title: "A Fraction of the Whole", published_year: 2008, original_language: 'English', author_id: 11)
 
-# New Zealand
+# # New Zealand
 
-Book.create!(title: "Once Were Warriors", published_year: 1990, original_language: 'English', author_id: 14)
-Book.create!(title: "Bone People", published_year: 1984, original_language: 'English', author_id: 13)
-Book.create!(title: "Whale Rider", published_year: 1987, original_language: 'English', author_id: 12)
+# Book.create!(title: "Once Were Warriors", published_year: 1990, original_language: 'English', author_id: 14)
+# Book.create!(title: "Bone People", published_year: 1984, original_language: 'English', author_id: 13)
+# Book.create!(title: "Whale Rider", published_year: 1987, original_language: 'English', author_id: 12)

@@ -242,6 +242,9 @@ a {
     .feature-book {
         max-height: 500px;
         overflow-y: auto;
+        .img-fluid {
+            width: 100%;
+        }
     }
 
     .authors-display {

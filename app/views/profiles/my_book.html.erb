@@ -18,7 +18,7 @@
             <h2>Books I've read</h2>
 
             <% @reads.each do |read| %>
-                <p><%= link_to read.book.title, read.book %> (<%= link_to read.book.author.country.name, read.book.author.country, class: "helper" %>) </p>
+                <p><%= link_to read.book.title, read.book %> | <%= link_to read.book.author.country.name, read.book.author.country, class: "helper" %> </p>
             <% end %>
         </div>
     </div>
