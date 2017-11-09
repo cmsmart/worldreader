@@ -53,9 +53,6 @@
             <li class="nav-item <%= 'active' if current_page?(regions_path) %>"><%= link_to "Regions", regions_path, class: "nav-link" %></li>
               <li class="nav-item"><%= link_to "My profile", profile_path(current_user.profile), class: "nav-link" %></li>
             <% end %>
-            <% if user_signed_in? && current_user.publisher? && current_user.profile.present? %>
-              <li class="nav-item"><%= link_to "Publisher profile", profile_path(current_user.publisher), class: "nav-link" %></li>
-            <% end %>
             <%# hide menu item if user not authorized %>
             <% if policy(Author).index? %> 
               <li class="nav-item <%= 'active' if current_page?(authors_path) %>"><%= link_to "Authors", authors_path, class: "nav-link"%></li>
