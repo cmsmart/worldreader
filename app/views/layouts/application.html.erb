@@ -62,13 +62,6 @@
               </li>
             <% end %>
 
-
-            <% if user_signed_in? && current_user.publisher? && current_user.publisher.present? %>
-              <li class="nav-item">
-                <%= link_to "My profile", publisher_path(current_user.publisher), class: "nav-link" %>
-              </li>
-            <% end %>
-
             <%# hide menu item if user not authorized %>
             <% if policy(Author).index? %> 
               <li class="nav-item <%= 'active' if current_page?(authors_path) %>"><%= link_to "Authors", authors_path, class: "nav-link"%></li>
