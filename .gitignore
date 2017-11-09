@@ -23,5 +23,3 @@
 public/uploads
 
 config/database.yml
-
-db/seeds.rb
