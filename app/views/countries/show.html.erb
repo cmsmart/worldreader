@@ -15,25 +15,81 @@
 </h3>
 
 <div class="content">
-  <div class="d-flex flex-nowrap justify-content-around">
-    <% @books.order(:title).each do |book| %>
-      <% if book.cover_image.present? %>
-        <div class="p-2"><%= link_to (image_tag book.cover_image_url(:thumb), alt: " #{book.title}", class: "img-fluid"), book %></div>
-      <% else %>
-        <div class="p-2"><%= link_to (image_tag "default_book.jpg", alt: " #{book.title}", class: "img-fluid"), book %></div>
-      <% end %>
-    <% end %>
-  </div>
 
+<div class="row">
+<% if !@promoted.empty? %>
+
+    <div class="col-md-8">
+      <h2>Books</h2>
+
+      <div class="d-flex flex-wrap display-books">
+          <% @books.order(:title).each do |book| %>
+            <div class="each-book">
+              <% if book.cover_image.present? %>
+                <div class="p-2"><%= link_to (image_tag book.cover_image_url(:thumb), alt: " #{book.title}", class: "img-fluid"), book %></div>
+              <% else %>
+                <div class="p-2"><%= link_to (image_tag "default_book.jpg", alt: " #{book.title}", class: "img-fluid"), book %></div>
+              <% end %>
+            </div>
+          <% end %>
+      </div>
+    </div>
+
+
+    <div class="col-md-4 feature-book">   
+      <h2>Featured Books</h2>
+      <div>
+        <% @books.each do |book| %>
+          <% if book.promoted == true %>
+              <% if book.cover_image.present? %>
+                <div class="p-2"><%= link_to (image_tag book.cover_image_url(:thumb), alt: " #{book.title}", class: "img-fluid"), book %></div>
+              <% else %>
+                <div class="p-2"><%= link_to (image_tag "default_book.jpg", alt: " #{book.title}", class: "img-fluid"), book %></div>
+              <% end %>
+          <% end %>
+        <% end %>
+     </div>
+    </div>
+<% else %>
   <div class="row">
-    <% @authors.order(:name).each do |author| %>
-      <% if author.books.present? %>
-        <div class="col-sm-3"><%= link_to author.name, author %></div>
-      <% end %>
-    <% end %>
+    <div class="col-md-12">
+      <div class="d-flex flex-wrap display-books">
+        <% @books.order(:title).each do |book| %>
+          <div class="each-book">
+            <% if book.cover_image.present? %>
+              <div class="p-2"><%= link_to (image_tag book.cover_image_url(:thumb), alt: " #{book.title}", class: "img-fluid"), book %></div>
+            <% else %>
+              <div class="p-2"><%= link_to (image_tag "default_book.jpg", alt: " #{book.title}", class: "img-fluid"), book %></div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
+<% end %>
 </div>
 
-<%= link_to 'Edit', edit_country_path(@country) %> |
 
-<%= link_to 'Back', region_path(@country.region) %>
+<div class="row content">
+<div class="col-sm-12">
+  <h2> Authors</h2>
+  <div class="d-flex flex-wrap authors-display">
+      <% @authors.order(:name).each do |author| %>
+        <% if author.books.present? %>
+          <div class="author">
+            <div class="photo rounded-circle">
+              <% if @photo.present? %>
+                  <%= image_tag @photo, alt: author.name %>
+              <% elsif author.photo.present? %>
+                  <%= image_tag author.photo_url(:thumb), alt: author.name %>
+              <% else %>
+                  <%= image_tag 'default_writer.jpg', alt: 'default image' %>
+              <% end%>
+            </div>
+            <p class="text-center"><%= link_to author.name, author %></p>
+          </div>
+        <% end %>
+      <% end %>
+  </div>
+</div>
+</div>

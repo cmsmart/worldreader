@@ -25,3 +25,9 @@
     <%= image_tag 'default_writer.jpg', alt: 'default image' %>
   <% end %>
   </div>
+
+<div class="temp-buttons">
+  <%= link_to "My Books", profile_my_books_path(current_user.profile), class: 'button' %>
+
+   <%= link_to "My Countries", profile_my_countries_path(current_user.profile), class: 'button' %>
+</div>

@@ -32,6 +32,31 @@ h3 {
     font-size: 20px;
 }
 
+// Navigation bar
+
+.top-nav {
+    padding: 10px;
+}
+
+.navbar {
+    display: inline-block;
+    .nav-link {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
+
+.aa-input-container {
+    display: inline-block;
+    float: right;
+}
+#user_nav {
+    display: inline-block;
+    float: right;
+    padding-top: 5px;
+    margin-right: 10px;
+}
+
 
 // Header
 
@@ -87,19 +112,38 @@ footer {
         margin: 0 auto;
         color: #fff;
     }
+    .btn, a.button {
+        background: darken($secondary-pop-one, 10%);
+        color: #fff;
+        text-transform: uppercase;
+        border-radius: 0;
+        font-family: $font-primary;
+        border: thin solid $main-dark;
+        &:hover {
+            background: $secondary-pop-one;
+            color: #fff;
+        }
+    }
+    
+    a.button {
+        padding: 0.5rem 0.75rem;
+        text-decoration: none;
+        transition: all 0.15s ease-in-out;
+    }
 }
 
 // Buttons
 
 .btn, a.button {
-    background: $secondary-pop-one;
+    background: darken($secondary-pop-one, 10%);
     color: #fff;
     text-transform: uppercase;
     border-radius: 0;
     font-family: $font-primary;
+    font-size: 14px;
     border: thin solid $main-dark;
     &:hover {
-        background: darken($secondary-pop-one, 10%);
+        background: $secondary-pop-one;
         color: #fff;
     }
 }
@@ -109,6 +153,17 @@ a.button {
     text-decoration: none;
     transition: all 0.15s ease-in-out;
 }
+
+a.disabled {
+    background: lighten($secondary-pop-one, 10%);
+}
+
+a.button {
+    padding: 0.5rem 0.75rem;
+    text-decoration: none;
+    transition: all 0.15s ease-in-out;
+}
+
 
 // Links
 
@@ -151,11 +206,51 @@ a {
     transform: translateX(-50%);
  }
 
+
+ //Regions page
+#regions {
+    .region-body {
+        margin-top: 50px;
+        // margin-bottom: 30px;
+    }
+    .col-sm-12 {
+        margin-bottom: 30px;
+        padding-top: 15px;
+        padding-bottom: 20px;
+        background: white;
+    }
+    h3 {
+        text-align: center;
+    }
+}
+
+
 // Countries page
 #country {
     .content {
-        margin-top: 30px;
+        margin-top: 50px;
         margin-bottom: 30px;
+    }
+    .display-books {
+        max-height: 500px;
+        overflow-y: auto;
+        justify-content: space-evenly;
+    }
+    .each-book {
+        max-width: 170px;
+    }
+    .feature-book {
+        max-height: 500px;
+        overflow-y: auto;
+    }
+
+    .authors-display {
+        margin-top: 30px;
+        justify-content: space-evenly;
+        .author {
+            padding: 10px;
+            margin: 20px;
+        }
     }
 }
 
@@ -192,9 +287,13 @@ a {
 
 // Book page
 
+
 .books-body {
     margin-top: 50px;
     margin-bottom: 30px;
+    .col-sm-4 {
+        text-align: center;
+    }
     .description {
         margin-bottom: 1rem;
     }
@@ -203,23 +302,119 @@ a {
             font-size: 0.8em;
         }
     }
-}
+ }
 
 #book-display {
     max-width: 800px;
     margin: 0 auto;
 }
 
+#favourite_book {
+    margin-bottom: 10px;
+    margin-left: 5px;
+    .fa {
+        font-size: 22px;
+        margin-left: 10px;
+    }
+}
+
+.user_buttons {
+    margin: 30px 0;
+    #reading_list, #have_read {
+        margin-bottom: 20px;
+        .fa {
+            margin-left: 10px;
+        } 
+    }
+}
+
+
+
 // Profile pages
+
+#profile {
+    .temp-buttons {
+    text-align: center;
+    }
+    .container {
+        margin-top: 50px;
+        margin-bottom: 30px;
+    }
+}
 
 .profile-body {
     margin-top: 50px;
     margin-bottom: 30px;
 }
 
-#profile-books {
+#profile-books, #profile-countries  {
     h2 {
-        text-align: left;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+    .profile-body .col-sm-12 {
+        background: white;
+        padding: 20px;
+        max-height: 600px;
+        overflow: auto;
+    }
+}
+
+#profile-countries {
+    .faux-map img {
+        width: 100%;
+    }
+}
+
+
+
+// Registration page
+#registration {
+    .faux-map img {
+        width: 100%;
+    }
+    main {
+        margin-bottom: 30px;
     }
 
+    .publisher-block {
+        border: thin solid $main-light;
+        padding: 10px;
+        margin-bottom: 30px;
+    }
+
+    .create-account {
+        input {
+            width: 100%;
+        }
+    }
+
+    .actions.button {
+        margin-top: 20px;
+    }
+
+    .devise-links {
+        text-align: center;
+    }
 }
+
+//Publisher registration
+
+#publisher_registration {
+    .rego-content {
+        margin-top: 50px;
+        margin-bottom: 30px;
+    }       
+    .rego-form {
+        label {
+            display: block;
+        }
+        max-width: 500px;
+        width: 100%;        
+        input, textarea {
+            width: 100%;
+        }
+    }     
+
+}
+

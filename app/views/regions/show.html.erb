@@ -2,6 +2,11 @@
 <% @page_title = @region.name %>
 <% @meta_description = "Countries of #{@region.name}" %>
 
+<%# Page class %>
+<% @page_id = 'region' %>
+
+<%# Content %>
+
 <div class="small-title">Region</div>
 
 <h1>
@@ -14,5 +19,6 @@
   <% end %>
 </div>
 
-<%= link_to 'Edit', edit_region_path(@region) %> |
-<%= link_to 'Back', regions_path %>
+<% if current_user.try(:admin?) %> 
+  <%= link_to 'Edit', edit_region_path(@region) %>
+<% end %>

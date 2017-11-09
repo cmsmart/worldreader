@@ -1,5 +1,11 @@
 <% if current_user.read?(book) %>
-    <%= link_to "remove", unread_path(book_id: book.id), remote: true, method: :delete, class: 'button' %>
+    <%= link_to unread_path(book_id: book.id), remote: true, method: :delete, class: 'button disabled' do %>
+    Remove from 'read it' <i class="fa fa-times" aria-hidden="true"></i>
+     <% end %>
 <% else %>
-    <%= link_to "I Have read this", read_path(book_id: book.id), remote: true, method: :post, class: 'button' %>
+    <%= link_to read_path(book_id: book.id), remote: true, method: :post, class: 'button' do %>
+    I've read it <i class="fa fa-check" aria-hidden="true"></i>
+    <% end %>
 <% end %>
+
+

@@ -28,6 +28,11 @@
     <%= form.label :title %>
     <%= form.text_field :title, id: :book_title %>
   </div>
+  
+  <div class="field">
+    <%= form.label :author_id %>
+   <%= form.collection_select :author_id, Author.order(:name), :id, :name, { include_blank: "Select an author" }, {class: "autocomplete"} %>
+  </div>
 
   <div class="field">
     <%= form.label :cover_image %>
@@ -53,10 +58,6 @@
     <%= form.text_field :original_language, id: :book_original_language %>
   </div>
 
-  <div class="field">
-    <%= form.label :author_id %>
-   <%= form.collection_select :author_id, Author.order(:name), :id, :name, { include_blank: "Select an author" }, {class: "autocomplete"} %>
-  </div>
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
     data-key="<%= Rails.configuration.stripe[:publishable_key] %>"

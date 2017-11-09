@@ -13,17 +13,17 @@
   <h2>Why join?</h2>
   <p>Lorem ipsum dolor sit amet, labore iuvaret ne eam, at quo ornatus officiis deseruisse. Atqui dicunt vel ut. Eius habeo voluptaria nam eu, pri no malorum apeirian partiendo. Est ne dictas verterem postulant. Probo aliquid vix te. Ex nullam admodum probatus duo, dicant molestiae vix ex, labitur accommodare eam et.</p>
 
-  <%= image_tag("portfolio_eg.png") %>
+  <div class="faux-map"><%= image_tag("faux-map.png") %></div>
 </div>
 
 <div class="col-sm-3">
 
-  <div class="text-center">
+  <div class="text-center publisher-block">
     <h2>Would you like to register as a publisher?</h2> 
     <%= link_to "Click here to learn more", :publisher_registration %>
   </div>
 
-  
+  <div class="create-account">
   <h2>Create an account</h2>  
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -53,10 +53,14 @@
       <%= f.password_field :password_confirmation, autocomplete: "off" %>
     </div>
 
-    <div class="actions">
+    <div class="actions button">
       <%= f.submit "Sign up" %>
     </div>
   <% end %>
 
-  <%= render "devise/shared/links" %>
+  <div class="devise-links">
+    <%= render "devise/shared/links" %>
+  </div>
+  
+  </div>
 </div>

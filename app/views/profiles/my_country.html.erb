@@ -11,14 +11,17 @@
 
 <h1><%= @profile.user.username %></h1>
 
+<div class="faux-map"><%= image_tag("faux-map.png")%></div>
+
 <div class="row profile-body">
+
 
     <div class="col-sm-4 offset-sm-2">
         <div class="col-sm-12 display">
             <h2>Countries I've read</h2>
             <div class="scroll">
                 <% @countries.each do |country, books | %>
-                    <p><%= country.name %> <span class="helper">(<%= books %> books)</span></p>
+                    <p><%= link_to country.name, country %> <span class="helper">(<%= books %> books)</span></p>
                 <% end %>
             </div>
         </div>
@@ -29,7 +32,7 @@
         <h2>Countries to read</h2>
             <div class="scroll">
                 <% @unread_countries.each do |country| %>
-                    <p><%= country.name %></p>
+                    <p><%= link_to country.name, country %></p>
                 <% end %>
             </div>
         </div>

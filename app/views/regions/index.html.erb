@@ -2,16 +2,21 @@
 <% @page_title = "World Regions" %>
 <% @meta_description = "World regions" %>
 
+<%# Page class %>
+<% @page_id = 'regions' %>
+
 <%# Content %>
 <h1>Regions</h1>
 
-<div class="row">
+<div class="row region-body">
     <% @regions.order(:id).each do |region| %>
         <div class="col-sm-3">
-            <h2><%= link_to region.name, region %></h2>
-            <% if region.map_graphic.present? %>
-                <%= link_to (image_tag region.map_graphic_url(:thumb), class: 'img-fluid', alt: " #{region.name}"), region %>
-            <% end %>
+            <div class="col-sm-12">
+                <h3><%= link_to region.name, region %></h3>
+                <% if region.map_graphic.present? %>
+                    <%= link_to (image_tag region.map_graphic_url(:thumb), class: 'img-fluid', alt: " #{region.name}"), region %>
+                <% end %>   
+            </div>
         </div>
         <%#= link_to 'Show', region %>
         <%#= link_to 'Edit', edit_region_path(region) %>

@@ -9,49 +9,52 @@
 
 <h1>Publisher Registration</h1>
 
-<h2>Why become a registered publisher?</h2>
-<p>Lorem ipsum dolor sit amet, labore iuvaret ne eam, at quo ornatus officiis deseruisse. Atqui dicunt vel ut. Eius habeo voluptaria nam eu, pri no malorum apeirian partiendo. Est ne dictas verterem postulant. Probo aliquid vix te. Ex nullam admodum probatus duo, dicant molestiae vix ex, labitur accommodare eam et.
-</p>
+<div class="rego-content">
+  <h2>Why become a registered publisher?</h2>
+  <p>Lorem ipsum dolor sit amet, labore iuvaret ne eam, at quo ornatus officiis deseruisse. Atqui dicunt vel ut. Eius habeo voluptaria nam eu, pri no malorum apeirian partiendo. Est ne dictas verterem postulant. Probo aliquid vix te. Ex nullam admodum probatus duo, dicant molestiae vix ex, labitur accommodare eam et.
+  </p>
 
-<h3>Promoted books</h3>
-<p>Lorem ipsum dolor sit amet, labore iuvaret ne eam, at quo ornatus officiis deseruisse. Atqui dicunt vel ut. Eius habeo voluptaria nam eu, pri no malorum apeirian partiendo. Est ne dictas verterem postulant. Probo aliquid vix te. Ex nullam admodum probatus duo, dicant molestiae vix ex, labitur accommodare eam et.
-</p>
+  <h3>Promoted books</h3>
+  <p>Lorem ipsum dolor sit amet, labore iuvaret ne eam, at quo ornatus officiis deseruisse. Atqui dicunt vel ut. Eius habeo voluptaria nam eu, pri no malorum apeirian partiendo. Est ne dictas verterem postulant. Probo aliquid vix te. Ex nullam admodum probatus duo, dicant molestiae vix ex, labitur accommodare eam et.
+  </p>
 
-<h3>Register</h3>
+  <h3>Register</h3>
 
-
-<%= form_with(url: publisher_registration_url, local: true) do |f| %>
-  <% unless @error_messages.empty? %>
-    <% @error_messages.each do |message| %>
-      <p><%= message %></p>
+  <div class="rego-form">
+  <%= form_with(url: publisher_registration_url, local: true) do |f| %>
+    <% unless @error_messages.empty? %>
+      <% @error_messages.each do |message| %>
+        <p><%= message %></p>
+      <% end %>
     <% end %>
+
+    <div>
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+    </div>
+
+      <div>
+      <%= f.label :contact_name %>
+      <%= f.text_field :contact_name %>
+    </div>
+
+    <div>
+      <%= f.label :publisher_name %>
+      <%= f.text_field :publisher_name %>
+    </div>
+
+      <div>
+      <%= f.label :website_url %>
+      <%= f.text_field :website %>
+    </div>
+
+    <div>
+      <%= f.label :details %>
+      <%= f.text_area :details, rows: 6 %>
+            <p class="helper">Please provide a short summary of your company</p>
+    </div>
+
+    <%= f.button 'Send' %>
   <% end %>
-
-  <div>
-    <%= f.label :email %>
-    <%= f.email_field :email %>
   </div>
-
-    <div>
-    <%= f.label :contact_name %>
-    <%= f.text_field :contact_name %>
-  </div>
-
-   <div>
-    <%= f.label :publisher_name %>
-    <%= f.text_field :publisher_name %>
-  </div>
-
-    <div>
-    <%= f.label :website_url %>
-    <%= f.text_field :website %>
-  </div>
-
-  <div>
-    <%= f.label :details %>
-    <%= f.text_area :details, rows: 6 %>
-          <p class="helper">Please provide a short summary of your company</p>
-  </div>
-
-  <%= f.button 'Send' %>
-<% end %>
+</div>

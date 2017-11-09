@@ -12,6 +12,14 @@ class CountriesController < ApplicationController
   def show
     @authors = @country.authors
     @books = @country.books
+    
+    @promoted=[]
+    
+    @books.each do |book|
+      if book.promoted == true
+      @promoted << book.title
+      end
+    end
   end
 
   # GET /countries/1/edit

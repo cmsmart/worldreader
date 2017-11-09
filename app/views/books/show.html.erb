@@ -15,6 +15,7 @@
 <p class="text-center"><%= link_to @book.author.country.name, @book.author.country %></p>
 
 <div class="row books-body">
+
   <div class="col-sm-4">
 
     <% if user_signed_in? %>
@@ -28,7 +29,19 @@
     <% else %>
       <%= image_tag 'default_book.jpg', alt: 'default image' %>
     <% end %>
-  </div>
+
+    <div class="user_buttons">
+      <% if user_signed_in? %>
+        <div id="reading_list">
+            <%= render 'reading_lists/button', book: @book %>
+        </div>
+
+        <div id="have_read">
+            <%= render 'reads/button', book: @book %>
+        </div>
+      <% end %>
+    </div><!-- end user buttons -->
+  </div><!--end col-sm-4 -->
 
   <div class="col-sm-8">
     <p><label>First published: </label> <%= @book.published_year %></p>
@@ -44,27 +57,8 @@
         </div>
       <% end %>
     <% end%>
-
-
-  <div class="user_buttons">
-
-    <% if user_signed_in? %>
-
-       <div id="reading_list">
-          <%= render 'reading_lists/button', book: @book %>
-      </div>
-
-<br>
-      <div id="have_read">
-          <%= render 'reads/button', book: @book %>
-      </div>
-      
-    <% end %>
-  </div>
-
-</div>
-
-</div>
+  </div><!-- end col-sm-8 -->
+</div> <!-- end row books-body -->
 
 <% if current_user.try(:admin?) %> 
   <%= link_to 'Edit', edit_book_path(@book) %>
