@@ -1,0 +1,5 @@
+<% if current_user.reading_list?(book) %>
+    <%= link_to "remove", remove_reading_list_path(book_id: book.id), remote: true, method: :delete, class: 'button' %>
+<% else %>
+    <%= link_to "I want to read this book", reading_list_path(book_id: book.id), remote: true, method: :post, class: 'button' %>
+<% end %>

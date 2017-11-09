@@ -16,6 +16,13 @@
 
 <div class="row books-body">
   <div class="col-sm-4">
+
+    <% if user_signed_in? %>
+      <div id="favourite_book">
+        <%= render 'favourite_books/button', book: @book %>
+      </div>
+    <% end %>
+  
     <% if @book.cover_image.present? %>
       <%= image_tag @book.cover_image_url(:original), alt: " #{@book.title}", class: "img-fluid" %>
     <% else %>
@@ -37,7 +44,25 @@
         </div>
       <% end %>
     <% end%>
+
+
+  <div class="user_buttons">
+
+    <% if user_signed_in? %>
+
+       <div id="reading_list">
+          <%= render 'reading_lists/button', book: @book %>
+      </div>
+
+<br>
+      <div id="have_read">
+          <%= render 'reads/button', book: @book %>
+      </div>
+      
+    <% end %>
   </div>
+
+</div>
 
 </div>
 

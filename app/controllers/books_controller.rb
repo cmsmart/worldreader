@@ -55,6 +55,8 @@ class BooksController < ApplicationController
       charge_error = nil
       
         if @book.valid?
+          @book.promoted = true
+
           begin
             customer = Stripe::Customer.create(
               :email => current_user.email,

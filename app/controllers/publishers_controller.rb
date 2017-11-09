@@ -60,12 +60,9 @@ class PublishersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     
     def set_publisher
-      if params[:id]
-        @publisher = Publisher.find(params[:id])
-      else
-        @publisher = Publisher.find_by(user: current_user)
-      end
+      @publisher = Publisher.find(params[:id])
     end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def publisher_params
       params.require(:publisher).permit(:name, :contact_person, :description, :website, :user_id)

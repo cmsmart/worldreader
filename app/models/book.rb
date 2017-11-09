@@ -4,6 +4,12 @@ class Book < ApplicationRecord
   # Shrine
   include ImageUploader[:cover_image]
 
+  # Different user states
+
+  has_many :favourite_books, dependent: :destroy
+  has_many :reading_lists, dependent: :destroy
+  has_many :reads, dependent: :destroy
+
   # Search
 
   include AlgoliaSearch

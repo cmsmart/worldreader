@@ -121,6 +121,9 @@ a {
     }
 }
 
+.helper {
+    font-size: 12px;
+}
 
 // Labels
 
@@ -129,6 +132,7 @@ a {
      font-size: 0.9em;
      margin-bottom: 0rem;
  }
+
 //Images
 
 .rounded-circle {
@@ -189,7 +193,7 @@ a {
 // Book page
 
 .books-body {
-    margin-top: 30px;
+    margin-top: 50px;
     margin-bottom: 30px;
     .description {
         margin-bottom: 1rem;
@@ -204,4 +208,18 @@ a {
 #book-display {
     max-width: 800px;
     margin: 0 auto;
+}
+
+// Profile pages
+
+.profile-body {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+#profile-books {
+    h2 {
+        text-align: left;
+    }
+
 }

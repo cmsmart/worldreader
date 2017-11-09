@@ -1,0 +1,11 @@
+<% if current_user.favourite_book?(book) %>
+A favourite? 
+    <%= link_to unfavourite_book_path(book_id: book.id), remote: true, method: :delete, title: 'Remove from favourites' do %>
+        <i class="fa fa-heart"></i><span class="helper"> remove</span>
+    <% end %>
+<% else %>
+A favourite? 
+    <%= link_to favourite_book_path(book_id: book.id), remote: true, method: :post, title: 'Add to favourites' do  %>
+        <i class="fa fa-heart-o"></i><span class="helper"> add it</span>
+    <% end %>
+<% end %>

@@ -1,17 +1,54 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:show, :edit, :update, :destroy]
+  before_action :set_profile, only: [:show, :my_book, :my_country, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
 
 
-  # GET /profiles/1
-  # GET /profiles/1.json
+  def index
+    @profiles = Profile.all
+  end
+ 
   def show
     redirect_to edit_profile_url if @profile.nil?
   end
 
+  def my_book
+    redirect_to edit_profile_url if @profile.nil?
+    # retreive data from users input
+    @favourites = current_user.favourite_books
+    @reads = current_user.reads
+    @reading_list = current_user.reading_lists
+  end
+
+  def my_country
+    redirect_to edit_profile_path if @profile.nil?
+
+    # get all books read by a user
+    @my_countries = current_user.reads
+
+    # create an array of countries from books read
+    @read_countries = []
+    @my_countries.each do |read|
+      @read_countries << read.book.author.country
+    end
+
+    # map countries to book count
+    @countries = Hash[@read_countries.uniq.map{ |i| [i, @read_countries.count(i)] }]
+
+    # get all countries available
+    @all_countries = Country.all
+
+    # create an array of countries that user has not read
+    @unread_countries = @all_countries - @read_countries.uniq
+
+  end
+
   # GET /profiles/new
   def new
-    @profile = Profile.new
+    if current_user.profile.nil? || current_user.admin?
+      @profile = Profile.new
+    else
+      redirect_to profiles_path(@profile)
+    end 
   end
 
   # GET /profiles/1/edit
@@ -55,7 +92,7 @@ class ProfilesController < ApplicationController
   def destroy
     @profile.destroy
     respond_to do |format|
-      format.html { redirect_to profiles_url, notice: 'Profile was successfully destroyed.' }
+      format.html { redirect_to root, notice: 'Profile was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -67,6 +104,8 @@ class ProfilesController < ApplicationController
       else
         @profile = Profile.find_by(user: current_user)
       end
+      # @profile = Profile.find(params[:id])
+      authorize @profile
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

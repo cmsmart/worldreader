@@ -1,0 +1,38 @@
+<%# Metadata %>
+<% @page_title = 'Profile - Countries' %>
+<% @meta_description = "List of countries that #{@profile.user.username} has read" %>
+
+<%# Page class %>
+<% @page_id = 'profile-countries' %>
+
+<%# Content %>
+
+<div class="small-title">Profile - Countries</div>
+
+<h1><%= @profile.user.username %></h1>
+
+<div class="row profile-body">
+
+    <div class="col-sm-4 offset-sm-2">
+        <div class="col-sm-12 display">
+            <h2>Countries I've read</h2>
+            <div class="scroll">
+                <% @countries.each do |country, books | %>
+                    <p><%= country.name %> <span class="helper">(<%= books %> books)</span></p>
+                <% end %>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="col-sm-12 display">
+        <h2>Countries to read</h2>
+            <div class="scroll">
+                <% @unread_countries.each do |country| %>
+                    <p><%= country.name %></p>
+                <% end %>
+            </div>
+        </div>
+    </div>
+
+</div>

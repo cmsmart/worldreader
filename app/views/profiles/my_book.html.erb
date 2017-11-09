@@ -1,0 +1,46 @@
+<%# Metadata %>
+<% @page_title = 'Profile - Books' %>
+<% @meta_description = "Book selections for #{@profile.user.username}" %>
+
+<%# Page class %>
+<% @page_id = 'profile-books' %>
+
+<%# Content %>
+
+<div class="small-title">Profile - Books</div>
+
+<h1><%= @profile.user.username %></h1>
+
+<div class="row profile-body">
+
+    <div class="col-sm-4">
+        <div class="col-sm-12 display">
+            <h2>Books I've read</h2>
+
+            <% @reads.each do |read| %>
+                <p><%= link_to read.book.title, read.book %> (<%= link_to read.book.author.country.name, read.book.author.country, class: "helper" %>) </p>
+            <% end %>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="col-sm-12 display">
+            <h2>Favourites</h2>
+
+            <% @favourites.each do |favourite| %>
+                <p><%= link_to favourite.book.title, favourite.book %> | <%= link_to favourite.book.author.country.name, favourite.book.author.country, class: "helper" %></p>
+            <% end %>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="col-sm-12 display">     
+            <h2>My reading list</h2>
+
+            <% @reading_list.each do |list| %>
+            <p><%= link_to list.book.title, list.book %> | <%= link_to list.book.author.country.name, list.book.author.country, class: "helper" %> </p>
+            <% end %>
+        </div>
+    </div>
+
+  </div>

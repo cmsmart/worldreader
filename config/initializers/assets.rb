@@ -15,3 +15,8 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
 # Javascript for page bottom
 Rails.application.config.assets.precompile += %w( app.js )
+
+#Javascript for map
+Rails.application.config.assets.precompile += %w( map.js )
+
+Rails.application.config.assets.precompile += %w( nations.geojson )

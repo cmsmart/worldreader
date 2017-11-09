@@ -1,24 +1,16 @@
 class ProfilePolicy < ApplicationPolicy
     
-        class Scope
-            attr_reader :user, :scope
-        
-            def initialize(user, scope)
-               @user = user
-               @scope = scope
-            end
-        
-            def resolve
-                if user.present? && user.admin?
-                    scope.all
-                else
-                    scope.none
-              end
-            end
+
+        def update?
+            user && user == record.user
         end
-    
-        def index?
-            return true if user.present? && user.admin?
+
+        def my_book?
+            scope.where(:id => record.id).exists?
+        end
+
+        def my_country?
+            scope.where(:id => record.id).exists?
         end
 
 end

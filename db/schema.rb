@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171106223706) do
+ActiveRecord::Schema.define(version: 20171108065520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20171106223706) do
     t.bigint "author_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "promoted"
     t.index ["author_id"], name: "index_books_on_author_id"
   end
 
@@ -48,6 +49,15 @@ ActiveRecord::Schema.define(version: 20171106223706) do
     t.datetime "updated_at", null: false
     t.index ["iso"], name: "index_countries_on_iso", unique: true
     t.index ["region_id"], name: "index_countries_on_region_id"
+  end
+
+  create_table "favourite_books", force: :cascade do |t|
+    t.bigint "book_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_favourite_books_on_book_id"
+    t.index ["user_id"], name: "index_favourite_books_on_user_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -63,12 +73,30 @@ ActiveRecord::Schema.define(version: 20171106223706) do
   create_table "publishers", force: :cascade do |t|
     t.string "name"
     t.string "contact_person"
-    t.string "description"
+    t.text "description"
     t.string "website"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_publishers_on_user_id"
+  end
+
+  create_table "reading_lists", force: :cascade do |t|
+    t.bigint "book_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_reading_lists_on_book_id"
+    t.index ["user_id"], name: "index_reading_lists_on_user_id"
+  end
+
+  create_table "reads", force: :cascade do |t|
+    t.bigint "book_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_reads_on_book_id"
+    t.index ["user_id"], name: "index_reads_on_user_id"
   end
 
   create_table "regions", force: :cascade do |t|
