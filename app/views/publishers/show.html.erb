@@ -1,23 +1,19 @@
-<p id="notice"><%= notice %></p>
+<%# Metadata %>
+<% @page_title = 'Publisher' %>
+<% @meta_description = "Profile page for  #{@profile.user.username}" %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @publisher.name %>
-</p>
+<%# Page class %>
+<% @page_id = 'publisher-profile' %>
 
-<p>
-  <strong>Contact person:</strong>
-  <%= @publisher.contact_person %>
-</p>
+<%# Content %>
+<div class="small-title">Publisher</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @publisher.description %>
-</p>
+<h1><%= @profile.user.username %></h1>
 
-<p>
-  <strong>Website:</strong>
-  <%= @publisher.website %>
-</p>
+<h3><%= @publisher.website %></h3>
+
+<p><%= @publisher.description %></p>
+
+<h3>Books</h3>
 
 <%= link_to 'Edit', edit_publisher_path(@publisher) %>
