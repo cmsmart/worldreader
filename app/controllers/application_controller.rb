@@ -6,16 +6,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
-  # redirect to profile page upon sign in if empty
-  def after_sign_in_path_for(resource)
-    if @user.present? && @profile.nil? && @user.admin?
-      new_profile_path
-    elsif @user.present? && @profile.nil? && @user.user?
-      new_profile_path
-    else @user.present? && @profile.nil? && @user.publisher?
-      new_publisher_path
-    end
-  end
+ 
 
   private
   

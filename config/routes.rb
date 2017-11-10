@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   devise_for :users
+  
   resources :profiles do
     get '/my-books' => 'profiles#my_book'
     get '/my-countries' => 'profiles#my_country'

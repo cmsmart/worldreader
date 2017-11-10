@@ -13,7 +13,7 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 
-# Javascript for page bottom
+# Javascript for page bottom (Algolia)
 Rails.application.config.assets.precompile += %w( app.js )
 
 #Javascript for map

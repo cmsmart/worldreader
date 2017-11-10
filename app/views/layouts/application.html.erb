@@ -3,7 +3,7 @@
   <head>
     <title>World Reader | <%= @page_title || "Admin area" %> </title>
     <meta name="description" content= "<%= @meta_description %>">
-    
+    <meta charset="UTF-8"> <meta name=viewport content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -58,6 +58,8 @@
             <% if user_signed_in? && current_user.user? && current_user.profile.present? %>
               <li class="nav-item">
                 <%= link_to "My profile", profile_path(current_user.profile), class: "nav-link" %>
+              <% elsif user_signed_in? && current_user.user? && current_user.profile.nil? %>
+                <%= link_to "Create profile", new_profile_path, class: "nav-link" %>  
               </li>
             <% end %>
 
