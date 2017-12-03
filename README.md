@@ -10,33 +10,6 @@
 
 ``` rails db:seed ```
 
-#### Keys required in environment variables
-
-##### amazon s3
-* S3_ACCESS_KEY_ID
-* S3_SECRET_ACCESS_KEY
-* S3_REGION
-* S3_BUCKET
-
-##### goodreads
-* GOODREADS_KEY
-
-##### custom devise key
-* DEVISE_KEY
-
-##### mailgun
-* MAILGUN_API_KEY 
-* MAILGUN_DOMAIN
-* REGISTRATION_EMAIL
-
-##### stripe
-* PUBLISHABLE_KEY
-* SECRET_KEY
-
-##### algolia search
-* ALGOLIA_ID
-* ALGOLIA_KEY
-
 ### Note
 
 Each section in the seeds file needs to be run in order and they are dependent on each other.
