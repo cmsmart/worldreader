@@ -61,7 +61,7 @@ gem 'mini_magick'
 gem 'httparty', '~> 0.13.5'
 
 # Admin
-gem 'rails_admin', '~> 1.2'
+# gem 'rails_admin', '~> 1.2'
 
 # Email
 gem 'mailgun-ruby', '~>1.1.6'
